@@ -1,8 +1,8 @@
 ## Andrey Karazhev
 
-Backend and distributed systems, 19 years. I work on data in motion: parsing and
-normalising what arrives from other systems, moving it, reconciling what does not
-match, and the analytics built on top. Java, Python, Go.
+Data engineering: backend and distributed systems, 19 years. I work on data in
+motion — parsing and normalising what arrives from other systems, moving it,
+reconciling what does not match, and the analytics built on top. Java, Python, Go.
 
 Most of what I publish is about the quiet failures — duplicates, gaps, stale
 values, order and reprocessing. They produce no errors in the log and surface
