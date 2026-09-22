@@ -1,28 +1,61 @@
 ## Andrey Karazhev
 
-I build small analytics products for crypto markets, and publish what I find while building them.
+Backend and distributed systems, 19 years. I work on data in motion: parsing and
+normalising what arrives from other systems, moving it, reconciling what does not
+match, and the analytics built on top. Java, Python, Go.
 
-The products are narrow on purpose: one question, answered from market or on-chain data, shipped as a standalone thing rather than a module of a platform.
+Most of what I publish is about the quiet failures — duplicates, gaps, stale
+values, order and reprocessing. They produce no errors in the log and surface
+weeks later as a wrong number.
 
-### Current
+### Diagnoses in other people's code
 
-**[Bitcoin Risk Brief](https://bitcoinriskbrief.minihub.app)** — a daily Bitcoin risk signal that shows its own data freshness on the page. A deterministic 0–1 metric, a scenario price ladder, seven locales, and a documented surface for AI agents. Analytics and research context, not financial advice.
-[source](https://github.com/akarazhev/bitcoin-risk-brief)
+Reading unfamiliar code until the mechanism is named, with line references and,
+where possible, a test that shows it.
 
-**[What DAOs actually fund](https://github.com/akarazhev/dao-funding-survey)** — a survey of 93 funding proposals across 29 governance forums: what gets funded, for how much, and through which channel. The collector, the raw data and the analysis are all in the repository, so the numbers can be checked against their source threads instead of taken on trust.
+**[numaflow#3645](https://github.com/numaproj/numaflow/issues/3645)** — an
+accumulator watermark that never advances when a key keeps receiving data and the
+function emits nothing for it. Verified with a local test against the Rust core.
+The team revisited the design, kept the behaviour as intended and restored the
+drop API in four SDKs.
 
-Both live under **[minihub.app](https://minihub.app)**.
+**[nats-server#8607](https://github.com/nats-io/nats-server/issues/8607)** — why
+adding a stream source scans the whole stream, what `opt_start_time` actually
+applies to, and what does bound the scan. Checked against the reporter's own
+version rather than `main`.
+
+**[ccxt#26773](https://github.com/ccxt/ccxt/issues/26773)** — a balance update
+lost rather than delayed, because `deepExtend` builds a new object.
+
+**[Lean#9790](https://github.com/QuantConnect/Lean/issues/9790)** — three of
+eight `Send` calls run off the result thread.
+
+### Surveys, with their collectors and raw data
+
+**[What breaks in price feeds](https://github.com/akarazhev/price-feed-failure-survey)** —
+1,163 commits that repair feed handling across 48 crypto organisations: what
+breaks, whether it comes back, and how it differs between publishing a feed and
+consuming one.
+
+**[What DAOs actually fund](https://github.com/akarazhev/dao-funding-survey)** —
+93 funding proposals across 29 governance forums: what gets funded, for how much,
+and through which channel. `analyse.py` reproduces the dataset byte for byte.
 
 ### Before that
 
-Backend and distributed systems, mostly Java.
+**[crypto-scout](https://github.com/akarazhev/crypto-scout)** — event-driven
+services that ingest market and on-chain events: collector, queue, analyst,
+TimescaleDB.
 
-**[metacfg4j](https://github.com/akarazhev/metacfg4j)** — a configuration library that puts a business abstraction over CRUD services, a DSL and MVP.
-**[crypto-scout](https://github.com/akarazhev/crypto-scout)** — an event-driven microservice set that ingests crypto market and on-chain events: collector, message queue, analyst, TimescaleDB stack.
+**[metacfg4j](https://github.com/akarazhev/metacfg4j)** — a configuration library
+with a business abstraction over CRUD services, a DSL and an MVP.
 
 ### How I work
 
-I write the method down next to the result. If a number is published here, the code that produced it and the data it ran on are published with it — a disagreement should be with a rule you can read, not with a figure you have to believe.
+I write the method down next to the result. If a number is published here, the
+code that produced it and the data it ran on are published with it — a
+disagreement should be with a rule you can read, not a figure you have to
+believe.
 
 Limits go in before conclusions, not in a footnote.
 
