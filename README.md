@@ -17,7 +17,8 @@ where possible, a test that shows it.
 accumulator watermark that never advances when a key keeps receiving data and the
 function emits nothing for it. Verified with a local test against the Rust core.
 The team revisited the design, kept the behaviour as intended and restored the
-drop API in four SDKs.
+drop API in four SDKs; the documentation fix is merged in
+[#3660](https://github.com/numaproj/numaflow/pull/3660).
 
 **[nats-server#8607](https://github.com/nats-io/nats-server/issues/8607)** — why
 adding a stream source scans the whole stream, what `opt_start_time` actually
@@ -33,9 +34,10 @@ eight `Send` calls run off the result thread.
 ### Surveys, with their collectors and raw data
 
 **[What breaks in price feeds](https://github.com/akarazhev/price-feed-failure-survey)** —
-1,163 commits that repair feed handling across 48 crypto organisations: what
-breaks, whether it comes back, and how it differs between publishing a feed and
-consuming one.
+1,163 commits matching six feed-failure terms across 48 crypto organisations,
+and how the vocabulary differs between publishing a feed and consuming one. A
+hand check of 100 diffs found about one in six is an actual repair; the
+correction and every classification are in the repository.
 
 **[What DAOs actually fund](https://github.com/akarazhev/dao-funding-survey)** —
 93 funding proposals across 29 governance forums: what gets funded, for how much,
