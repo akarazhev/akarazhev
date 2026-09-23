@@ -46,7 +46,7 @@ and through which channel. `analyse.py` reproduces the dataset byte for byte.
 ### Before that
 
 As an independent contractor I worked directly for telecom companies in
-Slovenia — Iskratel and RC IKT — remotely from Minsk, with acceptance testing on
+Slovenia — Iskratel and RC IKT — remotely, with acceptance testing on
 the client's own equipment.
 
 **[crypto-scout](https://github.com/akarazhev/crypto-scout)** — event-driven
