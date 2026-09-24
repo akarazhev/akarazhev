@@ -31,6 +31,15 @@ lost rather than delayed, because `deepExtend` builds a new object.
 **[Lean#9790](https://github.com/QuantConnect/Lean/issues/9790)** — three of
 eight `Send` calls run off the result thread.
 
+**[OCA/queue#996](https://github.com/OCA/queue/issues/996)** — an Odoo job
+recorded under the `__name__` of the function it found, not the name it was
+asked for. When a module installs a replacement under another name, as auditlog
+does for `write` and `unlink`, the job fails the moment it runs. The name was
+lost in four places; the fix and three tests are in
+[#998](https://github.com/OCA/queue/pull/998).
+
+<a href="https://github.com/OCA/queue/pull/998"><img src="oca-contributor.png" alt="OCA Contributor" width="120"></a>
+
 ### Surveys, with their collectors and raw data
 
 **[What breaks in price feeds](https://github.com/akarazhev/price-feed-failure-survey)** —
