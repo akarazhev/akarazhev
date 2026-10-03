@@ -1,17 +1,24 @@
 ## Andrey Karazhev
 
-Data engineering: backend and distributed systems, 19 years. I work on data in
-motion — parsing and normalising what arrives from other systems, moving it,
-reconciling what does not match, and the analytics built on top. Java, Python, Go.
+Data integration and reconciliation: I find why data between systems quietly
+goes wrong. Backend and distributed systems, 19 years. I work on data in motion —
+parsing and normalising what arrives from other systems, moving it, reconciling
+what does not match, and the analytics built on top. Java, Python, Go.
 
 Most of what I publish is about the quiet failures — duplicates, gaps, stale
 values, order and reprocessing. They produce no errors in the log and surface
 weeks later as a wrong number.
 
-### Diagnoses in other people's code
+### Fixes and diagnoses in other people's code
 
 Reading unfamiliar code until the mechanism is named, with line references and,
 where possible, a test that shows it.
+
+**[nats-server#8661](https://github.com/nats-io/nats-server/issues/8661)** — when
+`max_ack_pending` was not set, a configuration reload left open MQTT sessions with
+a limit of zero, and QoS 1 and 2 delivery stopped. The fix and a regression test
+were merged in [#8671](https://github.com/nats-io/nats-server/pull/8671) less than
+two hours after it was opened.
 
 **[numaflow#3645](https://github.com/numaproj/numaflow/issues/3645)** — an
 accumulator watermark that never advances when a key keeps receiving data and the
@@ -19,6 +26,11 @@ function emits nothing for it. Verified with a local test against the Rust core.
 The team revisited the design, kept the behaviour as intended and restored the
 drop API in four SDKs; the documentation fix is merged in
 [#3660](https://github.com/numaproj/numaflow/pull/3660).
+
+**[nats-server#8687](https://github.com/nats-io/nats-server/issues/8687)** — a
+stalled stream restore returned before the restore had stopped and without the
+completion advisory other failed restores send. The change and a test are in
+review in [#8691](https://github.com/nats-io/nats-server/pull/8691).
 
 **[nats-server#8607](https://github.com/nats-io/nats-server/issues/8607)** — why
 adding a stream source scans the whole stream, what `opt_start_time` actually
@@ -39,6 +51,12 @@ lost in four places; the fix and three tests are in
 [#998](https://github.com/OCA/queue/pull/998).
 
 <a href="https://github.com/OCA/queue/pull/998"><img src="oca-contributor.png" alt="OCA Contributor" width="120"></a>
+
+### Writing
+
+**[A watermark that wouldn't move](https://dev.to/akarazhev/why-a-numaflow-watermark-wouldnt-move-287m)** —
+the numaflow case above, step by step: following a state clean-up condition
+through the code and checking it with a test.
 
 ### Surveys, with their collectors and raw data
 
