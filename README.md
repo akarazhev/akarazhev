@@ -1,13 +1,16 @@
 ## Andrey Karazhev
 
-Data integration and reconciliation: I find why data between systems quietly
-goes wrong. Backend and distributed systems, 19 years. I work on data in motion —
-parsing and normalising what arrives from other systems, moving it, reconciling
-what does not match, and the analytics built on top. Java, Python, Go.
+Data integration and reconciliation, including data written by automation and
+AI: I find why it quietly goes wrong. Nineteen years of backend and data systems.
+I work on data in motion — parsing and normalising what arrives from other
+systems, moving it, reconciling what does not match, and the analytics built on
+top. Java, Python, Go, SQL.
 
 Most of what I publish is about the quiet failures — duplicates, gaps, stale
 values, order and reprocessing. They produce no errors in the log and surface
-weeks later as a wrong number.
+weeks later as a wrong number. Automation and AI now write into accounting
+systems too — invoices read from PDFs, documents recognised from scans — and
+they make the same mistakes, only faster.
 
 ### Fixes and diagnoses in other people's code
 
@@ -29,8 +32,9 @@ drop API in four SDKs; the documentation fix is merged in
 
 **[nats-server#8687](https://github.com/nats-io/nats-server/issues/8687)** — a
 stalled stream restore returned before the restore had stopped and without the
-completion advisory other failed restores send. The change and a test are in
-review in [#8691](https://github.com/nats-io/nats-server/pull/8691).
+completion advisory other failed restores send. The change and a test are
+approved by a maintainer in [#8691](https://github.com/nats-io/nats-server/pull/8691)
+and wait to be merged.
 
 **[nats-server#8607](https://github.com/nats-io/nats-server/issues/8607)** — why
 adding a stream source scans the whole stream, what `opt_start_time` actually
@@ -49,6 +53,13 @@ asked for. When a module installs a replacement under another name, as auditlog
 does for `write` and `unlink`, the job fails the moment it runs. The name was
 lost in four places; the fix and three tests are in
 [#998](https://github.com/OCA/queue/pull/998).
+
+**[OCA/edi#1423](https://github.com/OCA/edi/issues/1423#issuecomment-5995142801)** —
+Odoo's PDF invoice import dropped a total printed with one decimal and turned an
+integer into hundredths, without an error. Checked by running the conversion
+against the module's own test cases and sample invoice: the proposed fix changes
+none of them, while making the decimals optional would let a fragment of the VAT
+number beat any smaller total under the `max` rule.
 
 <a href="https://github.com/OCA/queue/pull/998"><img src="oca-contributor.png" alt="OCA Contributor" width="120"></a>
 
