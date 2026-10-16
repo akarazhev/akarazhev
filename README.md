@@ -12,6 +12,15 @@ weeks later as a wrong number. Automation and AI now write into accounting
 systems too — invoices read from PDFs, documents recognised from scans — and
 they make the same mistakes, only faster.
 
+### Demo
+
+**[Money reconciliation demo](https://reconciliation.minihub.app)** — ledger,
+platform payouts and bank reconciled to the cent for three made-up sellers: a
+Stripe web shop, an Ozon seller and a Wildberries seller. Every planted
+discrepancy is found by SQL (dbt and DuckDB) with its cause and amount; a new
+payout format is a staging folder and a mapping table, not a change to shared
+logic. [Code](https://github.com/akarazhev/reconciliation-demo).
+
 ### Fixes and diagnoses in other people's code
 
 Reading unfamiliar code until the mechanism is named, with line references and,
@@ -60,6 +69,19 @@ integer into hundredths, without an error. Checked by running the conversion
 against the module's own test cases and sample invoice: the proposed fix changes
 none of them, while making the decimals optional would let a fragment of the VAT
 number beat any smaller total under the `max` rule.
+
+**[factur-x#96](https://github.com/akretion/factur-x/pull/96)** — `get_level()`
+raised `IndexError` instead of its own `ValueError` on a `CustomizationID`
+without `:`, as a Belgian e-fff invoice carries. Merged an hour after it was
+opened and released in factur-x 7.7; the library parses the invoices that
+Odoo's OCA import reads, which I reviewed by running it in
+[OCA/edi#1426](https://github.com/OCA/edi/pull/1426).
+
+**[nautilus_trader#5332](https://github.com/nautechsystems/nautilus_trader/issues/5332#issuecomment-6186486735)** —
+an expired Deribit option stays open in the live engine's cache, while a
+backtest settles the same position: the live settlement path handles only
+binary options. Shown with a test on the engine's own fixtures; the fix is
+proposed and waits for the maintainers.
 
 <a href="https://github.com/OCA/queue/pull/998"><img src="oca-contributor.png" alt="OCA Contributor" width="120"></a>
 
