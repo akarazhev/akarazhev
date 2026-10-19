@@ -1,16 +1,16 @@
 ## Andrey Karazhev
 
-Data integration and reconciliation, including data written by automation and
-AI: I find why it quietly goes wrong. Nineteen years of backend and data systems.
-I work on data in motion — parsing and normalising what arrives from other
-systems, moving it, reconciling what does not match, and the analytics built on
-top. Java, Python, Go, SQL.
+Data integration, migration and data quality: I find why numbers between
+systems don't match. Nineteen years of backend and data systems. I work on data
+in motion — parsing and normalising what arrives from other systems, moving and
+migrating it, reconciling what does not match, and checking after each load that
+counts and sums still agree with the source. SQL, Python, Java, Go.
 
 Most of what I publish is about the quiet failures — duplicates, gaps, stale
 values, order and reprocessing. They produce no errors in the log and surface
-weeks later as a wrong number. Automation and AI now write into accounting
-systems too — invoices read from PDFs, documents recognised from scans — and
-they make the same mistakes, only faster.
+weeks later as a wrong number. It does not matter what wrote the data — a
+nightly job, a migration script or an import that reads invoices from PDFs, like
+the Odoo case below.
 
 ### Demo
 
