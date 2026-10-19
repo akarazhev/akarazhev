@@ -87,6 +87,11 @@ proposed and waits for the maintainers.
 
 ### Writing
 
+**[Why Stripe payouts don't match your books](https://dev.to/akarazhev/why-stripe-payouts-dont-match-your-books-3aoa)** —
+the demo's synthetic Stripe month, walked from the ledger to the bank: a €3,496.99
+gap, 96% of it a payout that crossed month-end, and €1,219.81 of differences that
+net to only €149.21.
+
 **[A watermark that wouldn't move](https://dev.to/akarazhev/why-a-numaflow-watermark-wouldnt-move-287m)** —
 the numaflow case above, step by step: following a state clean-up condition
 through the code and checking it with a test.
