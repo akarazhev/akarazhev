@@ -23,7 +23,7 @@ Ozon seller and a Wildberries seller) whose books, payouts and bank are reconcil
 - **[nats-server#8691](https://github.com/nats-io/nats-server/pull/8691)**: a stalled stream restore now reports like
   other failed restores. Approved.
 - **[OCA/queue#998](https://github.com/OCA/queue/pull/998)**: Odoo jobs lost the name of the method they were asked
-  to run. Approved.
+  to run. Merged.
 - **[OCA/edi#1423](https://github.com/OCA/edi/issues/1423#issuecomment-5995142801)**: Odoo's PDF invoice import
   silently dropped some amounts; checked against the module's own test invoices.
 
