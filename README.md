@@ -1,8 +1,11 @@
 ## Andrey Karazhev
 
-I work on data that moves between systems: integration, migration and data quality. Most of my time goes into
-finding why numbers stop matching after a load, an import or a migration, and into checks that catch it the next
-time. Nineteen years of backend and data systems; SQL, Python, Java, Go.
+Engineering Leader · Software & Data Integration Architect
+
+Software engineer and technical leader with 19 years in backend systems, software architecture, data integration,
+migration and data quality. I lead a team of five engineers. I work in Java, Python, SQL and Go. Most of my work sits
+where systems exchange data: integrations, migrations, distributed systems, and the reconciliation that shows whether
+the numbers on both sides still match.
 
 ### Demo
 
@@ -16,6 +19,10 @@ items carry into October.
 
 ### Fixes in other people's code
 
+- **[nautilus_trader#5501](https://github.com/nautechsystems/nautilus_trader/pull/5501)**: OKX history requests in
+  NautilusTrader now say whether the exchange returned the whole window, so a data catalog stores only complete ones.
+  15 commits, merged after review; the guide section followed in
+  [#5533](https://github.com/nautechsystems/nautilus_trader/pull/5533).
 - **[nats-server#8671](https://github.com/nats-io/nats-server/pull/8671)**: a config reload quietly stopped MQTT
   delivery. Merged less than two hours after I opened it.
 - **[factur-x#96](https://github.com/akretion/factur-x/pull/96)**: the wrong exception on Belgian e-invoices. Merged
